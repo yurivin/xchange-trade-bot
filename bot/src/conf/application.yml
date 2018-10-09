@@ -1,0 +1,8 @@
+---
+userName: irvv
+apiKey: OLcjgMwqcb64f9HC1pIlSZpJSLmrTeCYwaO378LX0wngaWqX8xsyLql99OBk8PuQ
+secretKey: I69NSRUW3iBxpZx5Cx5VovDgLwnbYWM9bQHNgvXV1Bw20ZysHZ4CeAyoCCyGuzI3
+minPricePercentageDifference: 0.6
+doTrade: true
+orderType: 2 # 1 - Limit or 2 - Market
+balanceDivisor: 4

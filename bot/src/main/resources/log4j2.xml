@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <RollingFile name="RollingFile" fileName="logs/application.log"
+      filePattern="logs/app-%d{MM-dd-yyyy}.log.gz"
+      ignoreExceptions="false">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <TimeBasedTriggeringPolicy/>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <!-- <Logger name="org.knowm.xchange.bot.service.BinanceHmacDigest" level="DEBUG" additivity="false">
+         <AppenderRef ref="STDOUT"/>
+         <AppenderRef ref="RollingFile"/>
+     </Logger>
+     <logger name="si.mazi.rescu.HttpTemplate" level="INFO" additivity="false">
+         <appender-ref ref="FILE-LOG"/>
+         <AppenderRef ref="STDOUT"/>
+     </logger>-->
+    <Root level="INFO">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+
+
+</Configuration>
