@@ -3,13 +3,14 @@ package com.github.yurivin.bot.env;
 import com.github.yurivin.bot.client.ExchangeClient;
 import com.github.yurivin.bot.repo.CacheRepository;
 import com.github.yurivin.bot.strategy.AbstractStrategy;
+import com.github.yurivin.bot.strategy.DefaultStrategy;
 import com.github.yurivin.bot.thread.StrategyRunnable;
 import info.bitrich.xchangestream.binance.BinanceStreamingExchange;
 import lombok.extern.slf4j.Slf4j;
 import org.knowm.xchange.binance.BinanceExchange;
 
 @Slf4j
-public class AbstractConfigurator implements Configurator {
+public class DefaultConfigurator implements Configurator {
 
     Environment env;
 
@@ -18,7 +19,7 @@ public class AbstractConfigurator implements Configurator {
         env.setPropertiesFactory(new YamlPropertiesFactory());
         env.setProperties(env.getPropertiesFactory().readProperties());
         env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
-        env.setStrategy(new AbstractStrategy(env));
+        env.setStrategy(new DefaultStrategy(env));
         env.setRepository(new CacheRepository());
         return env;
     }

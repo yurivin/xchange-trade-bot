@@ -1,7 +1,10 @@
 ---
+#API Connection parameters
 userName: irvv
 apiKey: APertter9XFK85efSWTfu6Pbg3e03D7zhFZuKU5uzReuGcrtNG98O
 secretKey: Az2R11AO2aH8Jc84ertSHaIw3CKBe85Vjert66diXLE234t4SGc
+
+# Strategy parameters
 minPricePercentageDifference: 0.6
 minLimitAvailableMultiplicant: 5
 doTrade: false
