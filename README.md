@@ -7,6 +7,8 @@ Universal Trade bot for cryptocurrency markets with REST and web socket streams 
 
 It is simple and already has everything to start implementing strategy logic and forget about other technical details.
 
+Very light weight and minimum of dependecies. Possible to use a bunch of this bots in one appllication(Documentation on this case coming soon)
+
 
 ### Parameters Configuration
 `rescources/application.yml` - configuration parameters
