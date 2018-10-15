@@ -31,7 +31,34 @@ Look at `DefaultConfigurator.java`. In most cases you just need to do 2 things i
 
 Also change in pom.xml `info.bitrich.xchange-stream` dependency if other than Binance exchange client used.
 
+```
+public class DefaultConfigurator implements Configurator {
+
+    Environment env;
+
+    public Environment configure() throws Exception {
+        env = new Environment();
+        env.setPropertiesFactory(new YamlPropertiesFactory());
+        env.setProperties(env.getPropertiesFactory().readProperties());
+        env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
+        env.setStrategy(new DefaultStrategy(env));
+        env.setRepository(new CacheRepository());
+        return env;
+    }
+
+    public void initialize() throws Exception {
+        env.getExchangeClient().initStreams(env.getStrategy().usedCurrencyPairs());
+        env.getExchangeClient().writeData();
+        env.getStrategy().setup();
+        Runnable runnable = new StrategyRunnable(env);
+        Thread strategyThread = new Thread(runnable, "Strategy thread");
+        strategyThread.start();
+    }
+}
+```
+
 If you implement `Configurator` interface in other class, you also need to change one line in `Application.java`. Insert your `Configurator` interface realisation in this line `AbstractConfigurator configurator = new DefaultConfigurator();` instead of default one.
+
 
 #### Implementing Strategy interface
 Look at methods in `DefaultStrategy.java`:
