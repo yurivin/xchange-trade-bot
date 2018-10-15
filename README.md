@@ -67,10 +67,6 @@ Look at methods in `DefaultStrategy.java`:
 3. `void setup() throws Exception;` - This is setup logic for strategy initialisation which shold be processed before strategy starts execution. 
 4. `void start() throws Exception;` - Write here your strategy logic.
 
-```
-
-```
-
 Also Strategy contains `Environment env` object level variable. There you will find all service to realise strategy.
 
 #### Environment
