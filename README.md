@@ -39,7 +39,7 @@ public class DefaultConfigurator implements Configurator {
     public Environment configure() throws Exception {
         env = new Environment();
         env.setPropertiesFactory(new YamlPropertiesFactory());
-        env.setProperties(env.getPropertiesFactory().readProperties());
+        env.setProperties(env.getPropertiesFactory().readProperties("default-strategy.yml"));
         env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
         env.setStrategy(new DefaultStrategy(env));
         env.setRepository(new CacheRepository());
