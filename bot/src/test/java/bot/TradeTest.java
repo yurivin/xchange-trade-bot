@@ -28,7 +28,7 @@ public class TradeTest {
     public void testBuy() throws IOException {
         Environment env = new Environment();
         env.setPropertiesFactory(new YamlPropertiesFactory());
-        env.setProperties(env.getPropertiesFactory().readProperties());
+        env.setProperties(env.getPropertiesFactory().readProperties("application.yml"));
         env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
 
         BinanceTradeService tradeService = (BinanceTradeService) env.getExchangeClient().getTradeService();
@@ -42,7 +42,7 @@ public class TradeTest {
     public void testExchangeInfo() throws IOException {
         Environment env = new Environment();
         env.setPropertiesFactory(new YamlPropertiesFactory());
-        env.setProperties(env.getPropertiesFactory().readProperties());
+        env.setProperties(env.getPropertiesFactory().readProperties("application.yml"));
         env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
 
         BinanceExchangeInfo binanceInfo = ((BinanceExchange)env.getExchangeClient().getExchange()).getExchangeInfo();

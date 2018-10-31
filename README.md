@@ -31,7 +31,34 @@ Look at `DefaultConfigurator.java`. In most cases you just need to do 2 things i
 
 Also change in pom.xml `info.bitrich.xchange-stream` dependency if other than Binance exchange client used.
 
+```
+public class DefaultConfigurator implements Configurator {
+
+    Environment env;
+
+    public Environment configure() throws Exception {
+        env = new Environment();
+        env.setPropertiesFactory(new YamlPropertiesFactory());
+        env.setProperties(env.getPropertiesFactory().readProperties("default-strategy.yml"));
+        env.setExchangeClient(new ExchangeClient(env, BinanceStreamingExchange.class.getName(), new BinanceExchange()));
+        env.setStrategy(new DefaultStrategy(env));
+        env.setRepository(new CacheRepository());
+        return env;
+    }
+
+    public void initialize() throws Exception {
+        env.getExchangeClient().initStreams(env.getStrategy().usedCurrencyPairs());
+        env.getExchangeClient().writeData();
+        env.getStrategy().setup();
+        Runnable runnable = new StrategyRunnable(env);
+        Thread strategyThread = new Thread(runnable, "Strategy thread");
+        strategyThread.start();
+    }
+}
+```
+
 If you implement `Configurator` interface in other class, you also need to change one line in `Application.java`. Insert your `Configurator` interface realisation in this line `AbstractConfigurator configurator = new DefaultConfigurator();` instead of default one.
+
 
 #### Implementing Strategy interface
 Look at methods in `DefaultStrategy.java`:
@@ -48,3 +75,21 @@ Services:
 1. `ExchangeClient exchangeClient;` - this is an instance of exchange client. There you'll find all services to make API calls. `AccountService`, `TradeService` and other.
 2. `Properties properties;` - this is a class `Properties.java` where you should add all your strategy specific properties with same name like in `application.yml` and this properties will be automatically initialised. 
 3. `Repository repository;` - This is repository where MarketData stream writes market data automatically after Application starts.
+
+### Using multiple exchanges in one application
+If you need to use multiple exchanges in one application, pehaps for arbitrage between exchanges, you steel may you this bot.
+
+Initialize every exchange bot like in `Application.java`. You will get environment for different exchanges. 
+Use those environments to work with each exchange. 
+
+```
+ Configurator default = new DefaultConfigurator(); 
+ Environment defaultEnv = default.configure(); 
+ default.initialize();
+ 
+ Configurator other = new OtherConfigurator();
+ Environment otherEnv = other.configure();
+ other.initialize();
+```
+ 
+ 
