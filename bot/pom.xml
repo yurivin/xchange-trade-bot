@@ -6,7 +6,7 @@
 
     <groupId>com.github.yurivin</groupId>
     <artifactId>bot</artifactId>
-    <version>0.1.2</version>
+    <version>1.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
