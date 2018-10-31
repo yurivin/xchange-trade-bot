@@ -2,11 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>con.github.yurivin</groupId>
-  <version>0.1.2</version>
+  <version>1.0.1</version>
   <artifactId>trade-bots</artifactId>
   <packaging>pom</packaging>
-  
-  <url>http://sonatype.com/book</url>
+
+  <name>xchange-trading-bot</name>
+  <description>Project contains bunch of cryptocurrency trading related application.</description>
+  <url>https://github.com/yurivin/xchange-trade-bot</url>
 
   <modules>
     <module>bot</module>
