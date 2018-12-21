@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>con.github.yurivin</groupId>
   <version>0.1.2</version>
-  <artifactId>trade-bots</artifactId>
+  <artifactId>trade-bot</artifactId>
   <packaging>pom</packaging>
   
   <url>http://sonatype.com/book</url>
