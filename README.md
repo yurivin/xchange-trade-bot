@@ -76,20 +76,6 @@ Services:
 2. `Properties properties;` - this is a class `Properties.java` where you should add all your strategy specific properties with same name like in `application.yml` and this properties will be automatically initialised. 
 3. `Repository repository;` - This is repository where MarketData stream writes market data automatically after Application starts.
 
-### Using multiple exchanges in one application
-If you need to use multiple exchanges in one application, pehaps for arbitrage between exchanges, you steel may you this bot.
 
-Initialize every exchange bot like in `Application.java`. You will get environment for different exchanges. 
-Use those environments to work with each exchange. 
-
-```
- Configurator default = new DefaultConfigurator(); 
- Environment defaultEnv = default.configure(); 
- default.initialize();
- 
- Configurator other = new OtherConfigurator();
- Environment otherEnv = other.configure();
- other.initialize();
-```
  
  
