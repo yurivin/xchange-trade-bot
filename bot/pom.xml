@@ -6,13 +6,13 @@
 
   <groupId>com.github.yurivin</groupId>
   <artifactId>bot</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <org.logback.version>1.1.3</org.logback.version>
-    <xchange.version>4.3.8</xchange.version>
+    <xchange.version>5.1.1-SNAPSHOT</xchange.version>
     <jackson.yaml.version>2.3.0</jackson.yaml.version>
     <jackson.databind.version>2.2.3</jackson.databind.version>
   </properties>
@@ -47,7 +47,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.20</version>
+      <version>1.18.24</version>
     </dependency>
 
     <!-- http://www.logicbig.com/tutorials/misc/java-logging/slf4j-with-log4j2/ -->
@@ -135,20 +135,6 @@
           </execution>
         </executions>
       </plugin>
-      <!--<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>-->
     </plugins>
   </build>
 </project>
